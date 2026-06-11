@@ -298,7 +298,12 @@ window.handleEmailLogin = async function() {
   try {
     await signInEmail(email, password);
   } catch (err) {
-    errEl.textContent = err.message;
+    let msg = err.message || "Sign-in failed.";
+    // Help diagnose unauthorized domain error
+    if (msg.toLowerCase().includes("unauthorized") || msg.toLowerCase().includes("domain")) {
+      msg = "This domain is not authorised in Firebase. Go to Firebase Console → Authentication → Settings → Authorized Domains and add: " + window.location.hostname;
+    }
+    errEl.textContent = msg;
     errEl.classList.add("show");
   } finally {
     btn.disabled    = false;
@@ -314,7 +319,11 @@ window.handleGoogleLogin = async function() {
   try {
     await signInGoogle();
   } catch (err) {
-    errEl.textContent = err.message;
+    let msg = err.message || "Google sign-in failed.";
+    if (msg.toLowerCase().includes("unauthorized") || msg.toLowerCase().includes("domain")) {
+      msg = "This domain is not authorised in Firebase. Go to Firebase Console → Authentication → Settings → Authorized Domains and add: " + window.location.hostname;
+    }
+    errEl.textContent = msg;
     errEl.classList.add("show");
   } finally {
     btn.disabled = false;
