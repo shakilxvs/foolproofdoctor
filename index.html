@@ -374,7 +374,8 @@ window.addEventListener("DOMContentLoaded", async () => {
   // EmailJS init — window.emailjs is available since the CDN
   // script is loaded synchronously in <head> before this module
   if (window.emailjs) {
-    window.emailjs.init("whLrQpTfWR4fzykmJ");
+    // EmailJS v4 init syntax
+    window.emailjs.init({ publicKey: "whLrQpTfWR4fzykmJ" });
   }
 
   try {
