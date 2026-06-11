@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Primary Meta -->
+<title id="metaTitle">FoolProofDoctor — Become Financially Foolproof</title>
+<meta name="description" id="metaDesc" content="Licensed financial professionals offering mortgage protection, income protection, business protection, family protection, retirement planning, and final expense coverage.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="FoolProofDoctor">
+<link rel="canonical" id="canonicalUrl" href="https://foolproofdoctor.com">
+
+<!-- Open Graph -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         id="ogUrl"   content="https://foolproofdoctor.com">
+<meta property="og:title"       id="ogTitle" content="FoolProofDoctor — Become Financially Foolproof">
+<meta property="og:description" id="ogDesc"  content="Protecting what matters most — your home, your income, your family, and your future.">
+<meta property="og:image"       id="ogImage" content="/og-image.svg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       id="twTitle" content="FoolProofDoctor">
+<meta name="twitter:description" id="twDesc"  content="Become Financially Foolproof">
+<meta name="twitter:image"       id="twImage" content="/og-image.svg">
+
+<!-- Favicon -->
+<link rel="icon"             type="image/svg+xml" href="/favicon.svg" id="faviconLink">
+<link rel="apple-touch-icon" href="/favicon.svg">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- EmailJS — loaded before module scripts so window.emailjs is available -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<!-- Styles -->
+<link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div id="loadingScreen">
+  <div class="loading-logo">FoolProof<span>Doctor</span></div>
+  <div class="loading-bar"></div>
+</div>
+
+<!-- Custom Cursor -->
+<div class="cursor"      id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Mobile Nav Drawer -->
+<div class="nav-drawer" id="navDrawer">
+  <div class="drawer-header">
+    <div class="drawer-logo" id="drawerLogo">FoolProof<span class="accent">Doctor</span></div>
+    <button class="drawer-close" onclick="closeDrawer()" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <ul class="drawer-links" id="drawerLinks">
+    <li><a onclick="closeDrawer(); scrollToSection('services')">Services</a></li>
+    <li><a onclick="closeDrawer(); scrollToSection('about')">About</a></li>
+    <li><a onclick="closeDrawer(); scrollToSection('contact')">Contact</a></li>
+  </ul>
+  <button class="drawer-cta" id="drawerCta" onclick="closeDrawer(); scrollToSection('contact')">Get Protected</button>
+</div>
+
+<!-- Navigation -->
+<nav id="mainNav" role="navigation" aria-label="Main navigation">
+  <a class="nav-logo" id="navLogo" href="/" onclick="return handleLogoClick(event)">
+    FoolProof<span class="accent">Doctor</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a onclick="navigateTo('home'); setTimeout(()=>scrollToSection('services'),80)">Services</a></li>
+    <li><a onclick="navigateTo('home'); setTimeout(()=>scrollToSection('about'),80)">About</a></li>
+    <li><a onclick="navigateTo('home'); setTimeout(()=>scrollToSection('contact'),80)">Contact</a></li>
+  </ul>
+  <button class="nav-cta" id="navCta" onclick="navigateTo('home'); setTimeout(()=>scrollToSection('contact'),80)">Get Protected</button>
+  <button class="hamburger" onclick="openDrawer()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ════════════════════ HOME PAGE ════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- Hero -->
+  <section class="hero" id="heroSection">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow" id="heroEyebrow">Licensed Financial Professionals</div>
+      <h1 class="hero-title" id="heroTitle">
+        Become<br><em>Financially</em><br>Foolproof
+      </h1>
+      <p class="hero-subtitle" id="heroSubtitle">
+        Protecting what matters most — your home, your income, your family, and your future. Comprehensive financial protection tailored to your life.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary" id="heroCta1" onclick="scrollToSection('services')">Explore Protection Plans</button>
+        <button class="btn-ghost"   id="heroCta2" onclick="scrollToSection('about')">Our Approach</button>
+      </div>
+    </div>
+    <div class="hero-scroll" onclick="scrollToSection('services')" aria-label="Scroll down">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <div class="marquee-item"><div class="marquee-dot"></div>Mortgage Protection</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Income Protection</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Business Protection</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Family Protection</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Retirement Planning</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Final Expense</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Become Financially Foolproof</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Mortgage Protection</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Income Protection</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Business Protection</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Family Protection</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Retirement Planning</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Final Expense</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Become Financially Foolproof</div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section class="about-strip" id="about">
+    <div class="fade-up">
+      <div class="section-label" id="aboutLabel">Who We Are</div>
+      <h2 class="section-title" id="aboutTitle">Your finances,<br><em>fortified.</em></h2>
+      <p class="about-text" id="aboutBody1">We believe financial security is not a luxury — it is a necessity. FoolProofDoctor was built on one principle: every family deserves protection that actually works when life doesn't go to plan.</p>
+      <p class="about-text" id="aboutBody2" style="margin-top:12px;">From your mortgage to your final wishes, we cover every chapter of your financial life with clarity, integrity, and unmatched personal service.</p>
+    </div>
+    <div class="about-stats fade-up" id="aboutStats">
+      <div class="stat-card"><div class="stat-num" data-stat="0">12+</div><div class="stat-label" data-stat-label="0">Years of Expertise</div></div>
+      <div class="stat-card"><div class="stat-num" data-stat="1">3K+</div><div class="stat-label" data-stat-label="1">Families Protected</div></div>
+      <div class="stat-card"><div class="stat-num" data-stat="2">98%</div><div class="stat-label" data-stat-label="2">Client Satisfaction</div></div>
+      <div class="stat-card"><div class="stat-num" data-stat="3">6</div><div class="stat-label"  data-stat-label="3">Protection Plans</div></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Services -->
+  <section class="services-section" id="services">
+    <div class="section-header">
+      <div class="section-header-left">
+        <div class="section-label" id="servicesLabel">What We Offer</div>
+        <h2 class="section-title" id="servicesTitle">Protection for<br><em>every chapter</em></h2>
+      </div>
+      <p class="section-sub" id="servicesSub">Six comprehensive plans, one goal — total financial security for you and everyone you love.</p>
+    </div>
+    <div class="masonry" id="servicesGrid"></div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="testimonial-section">
+    <p class="testimonial-text fade-up" id="testimonialText">
+      "FoolProofDoctor turned what felt like a complicated financial maze into a clear, confident plan. For the first time, I truly feel protected."
+    </p>
+    <div class="testimonial-author fade-up" id="testimonialAuthor">Sarah M. — Client since 2021</div>
+  </section>
+
+  <!-- CTA / Contact -->
+  <section class="cta-banner" id="contact">
+    <div class="cta-left fade-up">
+      <h2 class="cta-title" id="ctaTitle">Ready to become<br><em>financially<br>foolproof?</em></h2>
+      <p class="cta-sub" id="ctaSub">One conversation can change everything. Choose a protection plan and speak with a specialist today.</p>
+    </div>
+    <div class="cta-actions fade-up">
+      <button class="btn-primary" id="ctaPrimary"   onclick="navigateTo('mortgage-protection')">Start With Mortgage Protection</button>
+      <button class="btn-ghost"   id="ctaSecondary" onclick="scrollToSection('services')">Browse All Services</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-left">
+      <div class="footer-brand" id="footerBrand">FoolProof<span class="accent">Doctor</span></div>
+      <div class="footer-tagline" id="footerTagline">Become Financially Foolproof</div>
+
+      <!-- Contact strip -->
+      <div class="footer-contact" id="footerContact"></div>
+
+      <!-- Social icons -->
+      <div class="footer-social" id="footerSocial"></div>
+    </div>
+    <ul class="footer-links" id="footerLinks">
+      <li><a onclick="navigateTo('mortgage-protection')">Mortgage Protection</a></li>
+      <li><a onclick="navigateTo('income-protection')">Income Protection</a></li>
+      <li><a onclick="navigateTo('business-protection')">Business Protection</a></li>
+      <li><a onclick="navigateTo('family-protection')">Family Protection</a></li>
+      <li><a onclick="navigateTo('retirement-planning')">Retirement Planning</a></li>
+      <li><a onclick="navigateTo('final-expense')">Final Expense</a></li>
+    </ul>
+  </footer>
+  <div class="footer-bottom">
+    <span id="footerCopy">FoolProofDoctor Financial Protection</span>
+    <span>&copy; <span id="footerYear"></span> All rights reserved.</span>
+  </div>
+
+</div><!-- /page-home -->
+
+
+<!-- ════════════════════ SERVICE PAGE ════════════════════ -->
+<div class="page" id="page-service">
+
+  <section class="service-page-hero" id="spHero">
+    <div class="sp-bg"></div>
+    <div class="sp-pattern" id="spPattern"></div>
+    <div class="sp-content">
+      <button class="sp-back" onclick="navigateTo('home')" aria-label="Back to all services">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to All Services
+      </button>
+      <div class="sp-eyebrow" id="spEyebrow"></div>
+      <h1 class="sp-title"   id="spTitle"></h1>
+    </div>
+  </section>
+
+  <!-- Video -->
+  <section class="video-section">
+    <div class="video-container" id="spVideoContainer"></div>
+  </section>
+
+  <!-- Form -->
+  <section class="form-section">
+    <div class="form-info fade-up">
+      <div class="form-info-eyebrow" id="spFormEyebrow"></div>
+      <h2 class="form-info-title"    id="spFormTitle"></h2>
+      <p  class="form-info-text"     id="spFormText"></p>
+      <div class="form-promise">
+        <div class="promise-item">
+          <div class="promise-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="promise-text" id="promise1"><strong>Free consultation</strong> — No obligation, no pressure.</div>
+        </div>
+        <div class="promise-item">
+          <div class="promise-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <div class="promise-text" id="promise2"><strong>100% confidential</strong> — Your information is always protected.</div>
+        </div>
+        <div class="promise-item">
+          <div class="promise-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="promise-text" id="promise3"><strong>Response within 24 hours</strong> — We move as fast as life does.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card fade-up">
+      <div id="formContent">
+        <div class="form-card-title" id="formCardTitle">Get Your Free Quote</div>
+        <div class="form-card-sub"   id="formCardSub">Fill in your details and a specialist will be in touch shortly.</div>
+        <form id="contactForm" novalidate onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="fieldFirst">First Name</label>
+              <input class="form-input" id="fieldFirst" type="text" placeholder="John" autocomplete="given-name">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="fieldLast">Last Name</label>
+              <input class="form-input" id="fieldLast" type="text" placeholder="Smith" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="fieldEmail">Email Address</label>
+            <input class="form-input" id="fieldEmail" type="email" placeholder="john@example.com" autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="fieldPhone">Phone Number</label>
+            <input class="form-input" id="fieldPhone" type="tel" placeholder="+1 (555) 000-0000" autocomplete="tel">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="fieldAge">Age</label>
+              <input class="form-input" id="fieldAge" type="number" placeholder="35" min="18" max="90">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="fieldService">Coverage Interest</label>
+              <div class="form-select-wrap">
+                <select class="form-select" id="fieldService">
+                  <option value="">Select plan</option>
+                  <option value="Mortgage Protection">Mortgage Protection</option>
+                  <option value="Income Protection">Income Protection</option>
+                  <option value="Business Protection">Business Protection</option>
+                  <option value="Family Protection">Family Protection</option>
+                  <option value="Retirement Planning">Retirement Planning</option>
+                  <option value="Final Expense">Final Expense</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="fieldMessage">Tell Us About Your Situation</label>
+            <textarea class="form-textarea" id="fieldMessage" placeholder="Share any details that would help us tailor the right plan for you..."></textarea>
+          </div>
+          <button class="form-submit" id="formSubmitBtn" type="button" onclick="submitContactForm()">
+            Request My Free Quote
+          </button>
+        </form>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="success-title" id="successTitle">You are in good hands.</div>
+        <p class="success-text" id="successText">Thank you for reaching out. A specialist will contact you within 24 hours to discuss your personalised protection plan.</p>
+        <button class="btn-primary" style="margin-top:24px;" onclick="navigateTo('home')">Back to Home</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+  <footer>
+    <div class="footer-left">
+      <div class="footer-brand">FoolProof<span class="accent">Doctor</span></div>
+      <div class="footer-tagline" id="spFooterTagline">Become Financially Foolproof</div>
+      <div class="footer-contact" id="spFooterContact"></div>
+      <div class="footer-social"  id="spFooterSocial"></div>
+    </div>
+    <ul class="footer-links">
+      <li><a onclick="navigateTo('mortgage-protection')">Mortgage Protection</a></li>
+      <li><a onclick="navigateTo('income-protection')">Income Protection</a></li>
+      <li><a onclick="navigateTo('business-protection')">Business Protection</a></li>
+      <li><a onclick="navigateTo('family-protection')">Family Protection</a></li>
+      <li><a onclick="navigateTo('retirement-planning')">Retirement Planning</a></li>
+      <li><a onclick="navigateTo('final-expense')">Final Expense</a></li>
+    </ul>
+  </footer>
+  <div class="footer-bottom">
+    <span id="spFooterCopy">FoolProofDoctor Financial Protection</span>
+    <span>&copy; <span class="footerYearSp"></span> All rights reserved.</span>
+  </div>
+
+</div><!-- /page-service -->
+
+<!-- Toast -->
+<div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+<!-- Scripts -->
+<script type="module">
+import { loadSiteContent } from "/js/firebase-config.js";
+import { DEFAULT_CONTENT, SERVICE_KEYS } from "/js/content-defaults.js";
+import { handleFormSubmit, validateForm, showFieldError, clearAllErrors } from "/js/forms.js";
+
+// ── State ──────────────────────────────────────────────────
+let CONTENT = null;
+let currentService = null;
+
+// FIX: SLUG_TO_KEY must be built AFTER content loads, not at
+// module level where CONTENT is still null.
+let SLUG_TO_KEY = {};
+
+function buildSlugMap() {
+  SLUG_TO_KEY = {};
+  SERVICE_KEYS.forEach(k => {
+    const slug = CONTENT?.services?.[k]?.slug || k;
+    SLUG_TO_KEY[slug] = k;
+  });
+}
+
+// ── Bootstrap ──────────────────────────────────────────────
+window.addEventListener("DOMContentLoaded", async () => {
+  // EmailJS init — window.emailjs is available since the CDN
+  // script is loaded synchronously in <head> before this module
+  if (window.emailjs) {
+    window.emailjs.init("whLrQpTfWR4fzykmJ");
+  }
+
+  try {
+    const remote = await loadSiteContent();
+    CONTENT = remote ? deepMerge(DEFAULT_CONTENT, remote) : DEFAULT_CONTENT;
+  } catch(e) {
+    CONTENT = DEFAULT_CONTENT;
+  }
+
+  buildSlugMap();
+  applyContent();
+  buildServiceCards();
+  initRouter();
+  initCursor();
+  initScrollAnimations();
+  initNavScroll();
+
+  const yr = new Date().getFullYear();
+  document.querySelectorAll("#footerYear, .footerYearSp").forEach(el => el.textContent = yr);
+
+  setTimeout(() => {
+    document.getElementById("loadingScreen").classList.add("hidden");
+  }, 600);
+});
+
+// ── Deep merge ─────────────────────────────────────────────
+function deepMerge(defaults, overrides) {
+  const out = { ...defaults };
+  for (const key in overrides) {
+    if (overrides[key] && typeof overrides[key] === "object" && !Array.isArray(overrides[key])) {
+      out[key] = deepMerge(defaults[key] || {}, overrides[key]);
+    } else {
+      out[key] = overrides[key];
+    }
+  }
+  return out;
+}
+
+// ── Apply all content to DOM ───────────────────────────────
+function applyContent() {
+  const C = CONTENT;
+  const B = C.branding;
+
+  // Meta
+  document.title = C.seo.siteTitle || document.title;
+  setAttr("metaDesc",     "content",  C.seo.metaDescription);
+  setAttr("ogTitle",      "content",  C.seo.ogTitle);
+  setAttr("ogDesc",       "content",  C.seo.ogDescription);
+  setAttr("ogImage",      "content",  C.seo.ogImageUrl);
+  setAttr("canonicalUrl", "href",     C.seo.canonicalUrl);
+  if (B.faviconUrl) document.getElementById("faviconLink").href = B.faviconUrl;
+
+  // Accent color
+  if (B.accentColor)      document.documentElement.style.setProperty("--gold",  B.accentColor);
+  if (B.accentColorHover) document.documentElement.style.setProperty("--gold2", B.accentColorHover);
+
+  // Logo (all instances)
+  applyLogo("navLogo",    B);
+  applyLogo("drawerLogo", B);
+
+  // Nav
+  setText("navCta",   C.nav.ctaText);
+  setText("drawerCta",C.nav.ctaText);
+
+  // Hero
+  setText("heroEyebrow", C.hero.eyebrow);
+  buildTitle("heroTitle", [C.hero.titleLine1, C.hero.titleLine2, C.hero.titleLine3], C.hero.titleItalicLine);
+  setText("heroSubtitle", C.hero.subtitle);
+  setText("heroCta1", C.hero.ctaPrimary);
+  setText("heroCta2", C.hero.ctaSecondary);
+
+  // About
+  setText("aboutLabel",  C.about.label);
+  buildTitle("aboutTitle", [C.about.titleLine1, C.about.titleLine2], C.about.titleItalicLine);
+  setText("aboutBody1",  C.about.body1);
+  setText("aboutBody2",  C.about.body2);
+  C.about.stats.forEach((s, i) => {
+    const n = document.querySelector(`[data-stat="${i}"]`);
+    const l = document.querySelector(`[data-stat-label="${i}"]`);
+    if (n) n.textContent = s.num;
+    if (l) l.textContent = s.label;
+  });
+
+  // Services section
+  setText("servicesLabel",  C.servicesSection.label);
+  buildTitle("servicesTitle", [C.servicesSection.titleLine1, C.servicesSection.titleLine2], C.servicesSection.titleItalicLine);
+  setText("servicesSub",    C.servicesSection.subtitle);
+
+  // Testimonial
+  setText("testimonialText",   `"${C.testimonial.quote}"`);
+  setText("testimonialAuthor", `${C.testimonial.author} — ${C.testimonial.role}`);
+
+  // CTA
+  buildTitle("ctaTitle", [C.cta.titleLine1, C.cta.titleLine2, C.cta.titleLine3], C.cta.titleItalicLine);
+  setText("ctaSub",       C.cta.subtitle);
+  setText("ctaPrimary",   C.cta.ctaPrimary);
+  setText("ctaSecondary", C.cta.ctaSecondary);
+
+  // Footer — home page
+  setText("footerTagline", C.footer.tagline);
+  setText("footerCopy",    C.footer.copyrightName);
+  buildFooterContact("footerContact", C.contact);
+  buildFooterSocial("footerSocial",   C.footer.socialLinks);
+
+  // Footer — service page
+  setText("spFooterTagline", C.footer.tagline);
+  setText("spFooterCopy",    C.footer.copyrightName);
+  buildFooterContact("spFooterContact", C.contact);
+  buildFooterSocial("spFooterSocial",   C.footer.socialLinks);
+
+  // Form
+  setText("formCardTitle", C.form.title);
+  setText("formCardSub",   C.form.subtitle);
+  setText("formSubmitBtn", C.form.submitText);
+  setText("successTitle",  C.form.successTitle);
+  setText("successText",   C.form.successText);
+}
+
+function setText(id, text) {
+  const el = document.getElementById(id);
+  if (el && text !== undefined && text !== null) el.textContent = text;
+}
+function setAttr(id, attr, val) {
+  const el = document.getElementById(id);
+  if (el && val) el.setAttribute(attr, val);
+}
+
+function buildTitle(id, lines, italicLine) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = lines
+    .filter(Boolean)
+    .map((line, i) => i + 1 === italicLine ? `<em>${line}</em>` : line)
+    .join("<br>");
+}
+
+function applyLogo(id, B) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (B.logoType === "image" && B.logoImageUrl) {
+    el.innerHTML = `<img src="${B.logoImageUrl}" alt="${B.logoText || 'FoolProofDoctor'}" class="logo-image" style="width:${B.logoImageWidth || '140px'}">`;
+  } else {
+    const text   = B.logoText        || "FoolProofDoctor";
+    const accent = B.logoTextAccent  || "Doctor";
+    const idx    = text.lastIndexOf(accent);
+    if (idx === -1) {
+      el.innerHTML = `${text}`;
+    } else {
+      el.innerHTML = `${text.slice(0, idx)}<span class="accent">${accent}</span>${text.slice(idx + accent.length)}`;
+    }
+  }
+}
+
+// ── Footer contact strip ──────────────────────────────────
+function buildFooterContact(elId, contact) {
+  const el = document.getElementById(elId);
+  if (!el) return;
+  const items = [];
+  if (contact.phone) {
+    items.push(`
+      <a href="tel:${contact.phone}" class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 012.1 5.18 2 2 0 014.1 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 17z"/>
+        </svg>
+        <span>${contact.phone}</span>
+      </a>`);
+  }
+  if (contact.email) {
+    items.push(`
+      <a href="mailto:${contact.email}" class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        <span>${contact.email}</span>
+      </a>`);
+  }
+  el.innerHTML = items.join("");
+  el.style.display = items.length ? "flex" : "none";
+}
+
+// ── Footer social ─────────────────────────────────────────
+function buildFooterSocial(elId, links) {
+  const el = document.getElementById(elId);
+  if (!el) return;
+  const icons = {
+    facebook:  `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>`,
+    instagram: `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`,
+    twitter:   `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>`,
+    linkedin:  `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>`,
+  };
+  const html = Object.entries(links || {})
+    .filter(([, url]) => url && url.trim())
+    .map(([platform, url]) =>
+      `<a href="${url}" target="_blank" rel="noopener noreferrer" aria-label="${platform}" class="footer-social-link">${icons[platform] || ""}</a>`)
+    .join("");
+  el.innerHTML = html;
+  el.style.display = html ? "flex" : "none";
+}
+
+// ── Build service cards ────────────────────────────────────
+const CARD_HEIGHTS   = { mortgage:220, income:180, business:260, family:200, retirement:240, final:190 };
+const CARD_ICONS     = {
+  mortgage:   `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+  income:     `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>`,
+  business:   `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>`,
+  family:     `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>`,
+  retirement: `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+  final:      `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+};
+const BG_COLORS = {
+  mortgage:"linear-gradient(135deg,#0e0e12,#1a1508)",
+  income:"linear-gradient(135deg,#0d0f14,#0a1215)",
+  business:"linear-gradient(135deg,#0f0d0d,#160f08)",
+  family:"linear-gradient(135deg,#0c0e10,#0e1510)",
+  retirement:"linear-gradient(135deg,#100c14,#0e0810)",
+  final:"linear-gradient(135deg,#0d0d0d,#141414)",
+};
+function cardPattern(key, h) {
+  const p = {
+    mortgage:   `<polygon points="200,20 380,${h} 20,${h}" fill="none" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.3"/><polygon points="200,55 340,${h} 60,${h}" fill="none" stroke="#c8a96e" stroke-width="0.4" stroke-opacity="0.15"/><line x1="200" y1="20" x2="200" y2="${h}" stroke="#c8a96e" stroke-width="0.8" stroke-opacity="0.4"/><circle cx="200" cy="20" r="3" fill="#c8a96e" fill-opacity="0.6"/>`,
+    income:     `<polyline points="20,${h*.9} 100,${h*.6} 200,${h*.75} 280,${h*.3} 360,${h*.55} 400,${h*.2}" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-opacity="0.6"/><circle cx="280" cy="${h*.3}" r="4" fill="#c8a96e" fill-opacity="0.8"/>`,
+    business:   `<rect x="60" y="40" width="80" height="80" fill="none" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.3" transform="rotate(15 100 80)"/><rect x="190" y="90" width="110" height="110" fill="none" stroke="#c8a96e" stroke-width="0.8" stroke-opacity="0.4" transform="rotate(-8 245 145)"/><circle cx="200" cy="130" r="2" fill="#c8a96e" fill-opacity="0.8"/>`,
+    family:     `<circle cx="200" cy="${h/2}" r="${h*.4}" fill="none" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.25"/><circle cx="200" cy="${h/2}" r="${h*.28}" fill="none" stroke="#c8a96e" stroke-width="0.8" stroke-opacity="0.35"/><circle cx="200" cy="${h/2}" r="${h*.15}" fill="none" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.2"/><circle cx="200" cy="${h/2}" r="3" fill="#c8a96e" fill-opacity="0.7"/>`,
+    retirement: `<rect x="30" y="${h*.65}" width="40" height="${h*.35}" fill="#c8a96e" fill-opacity="0.1"/><rect x="90" y="${h*.5}" width="40" height="${h*.5}" fill="#c8a96e" fill-opacity="0.15"/><rect x="150" y="${h*.35}" width="40" height="${h*.65}" fill="#c8a96e" fill-opacity="0.2"/><rect x="210" y="${h*.22}" width="40" height="${h*.78}" fill="#c8a96e" fill-opacity="0.25"/><rect x="270" y="${h*.1}" width="40" height="${h*.9}" fill="#c8a96e" fill-opacity="0.3"/><polyline points="50,${h*.65} 110,${h*.5} 170,${h*.35} 230,${h*.22} 290,${h*.1}" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-opacity="0.6"/><circle cx="290" cy="${h*.1}" r="4" fill="#c8a96e" fill-opacity="0.9"/>`,
+    final:      `<line x1="0" y1="${h/2}" x2="400" y2="${h/2}" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.2"/><path d="M 0 ${h/2} Q 100 ${h*.1} 200 ${h/2} Q 300 ${h*.9} 400 ${h/2}" fill="none" stroke="#c8a96e" stroke-width="1.2" stroke-opacity="0.4"/><circle cx="200" cy="${h/2}" r="4" fill="#c8a96e" fill-opacity="0.6"/>`,
+  };
+  return `<svg width="100%" height="100%" viewBox="0 0 400 ${h}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">${p[key] || ""}</svg>`;
+}
+
+function buildServiceCards() {
+  const grid = document.getElementById("servicesGrid");
+  if (!grid) return;
+  grid.innerHTML = "";
+  SERVICE_KEYS.forEach((key, idx) => {
+    const svc = CONTENT.services[key];
+    const h   = CARD_HEIGHTS[key];
+    const el  = document.createElement("div");
+    el.className = "masonry-item";
+    el.innerHTML = `
+      <div class="service-card" role="button" tabindex="0"
+           aria-label="Learn about ${svc.cardTitle}"
+           onclick="window.navigateTo('${svc.slug}')"
+           onkeydown="if(event.key==='Enter')window.navigateTo('${svc.slug}')">
+        <div class="card-visual" style="height:${h}px;background:${BG_COLORS[key]}">
+          <div class="card-pattern">${cardPattern(key, h)}</div>
+          <div class="card-overlay"></div>
+          <div class="card-icon-wrap">${CARD_ICONS[key]}</div>
+        </div>
+        <div class="card-body">
+          <div class="card-num">0${idx + 1}</div>
+          <div class="card-title">${svc.cardTitle}</div>
+          <p class="card-desc">${svc.cardDesc}</p>
+          <div class="card-arrow">
+            Learn More
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </div>`;
+    grid.appendChild(el);
+  });
+  initCardReveal();
+}
+
+// ── Router ─────────────────────────────────────────────────
+function initRouter() {
+  handleRoute();
+  window.addEventListener("popstate", handleRoute);
+}
+
+function handleRoute() {
+  const path = window.location.pathname.replace(/^\//, "").replace(/\/$/, "");
+  if (!path || path === "index.html") {
+    showPage("home");
+  } else {
+    const key = SLUG_TO_KEY[path];
+    if (key) {
+      loadServicePage(key);
+    } else {
+      showPage("home");
+    }
+  }
+}
+
+window.navigateTo = function(slug) {
+  if (slug === "home") {
+    history.pushState({}, "", "/");
+    showPage("home");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else {
+    // Find canonical slug from slug map
+    const key = SLUG_TO_KEY[slug] || Object.keys(CONTENT.services).find(k => CONTENT.services[k].slug === slug) || slug;
+    const canonicalSlug = CONTENT.services[key]?.slug || slug;
+    history.pushState({}, "", "/" + canonicalSlug);
+    loadServicePage(key);
+  }
+};
+
+window.handleLogoClick = function(e) {
+  e.preventDefault();
+  navigateTo("home");
+  return false;
+};
+
+function showPage(id) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  const el = document.getElementById("page-" + id);
+  if (el) el.classList.add("active");
+  if (id === "home") {
+    const fc = document.getElementById("formContent");
+    const fs = document.getElementById("formSuccess");
+    if (fc) fc.style.display = "block";
+    if (fs) fs.classList.remove("show");
+  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  setTimeout(() => initScrollAnimations(), 80);
+}
+
+// ── Service page ───────────────────────────────────────────
+const HERO_BG = {
+  mortgage:"linear-gradient(135deg,#0a0a0b,#161006)",
+  income:"linear-gradient(135deg,#0a0a0b,#080d10)",
+  business:"linear-gradient(135deg,#0a0a0b,#100c08)",
+  family:"linear-gradient(135deg,#0a0a0b,#081008)",
+  retirement:"linear-gradient(135deg,#0a0a0b,#0d0810)",
+  final:"linear-gradient(135deg,#0a0a0b,#111111)",
+};
+const HERO_PATTERNS = {
+  mortgage:   `<svg width="100%" height="100%" viewBox="0 0 1400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><polygon points="700,20 1380,490 20,490" fill="none" stroke="#c8a96e" stroke-width="0.6" stroke-opacity="0.22"/><polygon points="700,80 1260,490 140,490" fill="none" stroke="#c8a96e" stroke-width="0.4" stroke-opacity="0.12"/><line x1="700" y1="20" x2="700" y2="500" stroke="#c8a96e" stroke-width="0.7" stroke-opacity="0.3"/></svg>`,
+  income:     `<svg width="100%" height="100%" viewBox="0 0 1400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><polyline points="40,430 200,300 400,360 700,160 960,250 1160,110 1360,150" fill="none" stroke="#c8a96e" stroke-width="2" stroke-opacity="0.3"/><circle cx="700" cy="160" r="5" fill="#c8a96e" fill-opacity="0.7"/></svg>`,
+  business:   `<svg width="100%" height="100%" viewBox="0 0 1400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect x="80" y="60" width="220" height="220" fill="none" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.25" transform="rotate(12 190 170)"/><rect x="440" y="130" width="300" height="300" fill="none" stroke="#c8a96e" stroke-width="0.8" stroke-opacity="0.28" transform="rotate(-6 590 280)"/><rect x="1020" y="80" width="180" height="180" fill="none" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.22" transform="rotate(18 1110 170)"/></svg>`,
+  family:     `<svg width="100%" height="100%" viewBox="0 0 1400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><circle cx="700" cy="250" r="220" fill="none" stroke="#c8a96e" stroke-width="0.6" stroke-opacity="0.22"/><circle cx="700" cy="250" r="160" fill="none" stroke="#c8a96e" stroke-width="0.8" stroke-opacity="0.28"/><circle cx="700" cy="250" r="100" fill="none" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.18"/><circle cx="700" cy="250" r="5" fill="#c8a96e" fill-opacity="0.6"/></svg>`,
+  retirement: `<svg width="100%" height="100%" viewBox="0 0 1400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect x="60" y="360" width="80" height="140" fill="#c8a96e" fill-opacity="0.07"/><rect x="200" y="300" width="80" height="200" fill="#c8a96e" fill-opacity="0.11"/><rect x="340" y="230" width="80" height="270" fill="#c8a96e" fill-opacity="0.15"/><rect x="480" y="170" width="80" height="330" fill="#c8a96e" fill-opacity="0.19"/><rect x="620" y="110" width="80" height="390" fill="#c8a96e" fill-opacity="0.23"/><polyline points="100,360 240,300 380,230 520,170 660,110" fill="none" stroke="#c8a96e" stroke-width="2.5" stroke-opacity="0.55"/><circle cx="660" cy="110" r="5" fill="#c8a96e" fill-opacity="0.8"/></svg>`,
+  final:      `<svg width="100%" height="100%" viewBox="0 0 1400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="250" x2="1400" y2="250" stroke="#c8a96e" stroke-width="0.4" stroke-opacity="0.18"/><path d="M 0 250 Q 350 60 700 250 Q 1050 440 1400 250" fill="none" stroke="#c8a96e" stroke-width="1.8" stroke-opacity="0.35"/><circle cx="700" cy="250" r="5" fill="#c8a96e" fill-opacity="0.7"/></svg>`,
+};
+
+function loadServicePage(key) {
+  const svc = CONTENT.services[key];
+  if (!svc) { showPage("home"); return; }
+  currentService = key;
+
+  // Meta
+  document.title = svc.metaTitle || `${svc.cardTitle} | FoolProofDoctor`;
+
+  // Hero
+  document.getElementById("spHero").style.background = HERO_BG[key] || HERO_BG.mortgage;
+  document.getElementById("spPattern").innerHTML      = HERO_PATTERNS[key] || "";
+  document.getElementById("spEyebrow").textContent    = svc.eyebrow;
+  // Page title: first word normal, rest italic gold
+  const words = (svc.pageTitle || svc.cardTitle).split(" ");
+  document.getElementById("spTitle").innerHTML =
+    words.length > 1
+      ? `${words[0]}<br><em>${words.slice(1).join(" ")}</em>`
+      : svc.pageTitle;
+
+  // Video
+  renderVideo(svc, key);
+
+  // Form info
+  document.getElementById("spFormEyebrow").textContent = svc.eyebrow;
+  document.getElementById("spFormTitle").innerHTML     = buildFormTitle(svc.formTitle, svc.formTitleItalic);
+  document.getElementById("spFormText").textContent    = svc.formText;
+
+  // Pre-select dropdown
+  const sel = document.getElementById("fieldService");
+  if (sel) {
+    Array.from(sel.options).forEach(opt => {
+      opt.selected = opt.value === svc.cardTitle;
+    });
+  }
+
+  // Form text from global content
+  setText("formCardTitle", CONTENT.form.title);
+  setText("formCardSub",   CONTENT.form.subtitle);
+  setText("formSubmitBtn", CONTENT.form.submitText);
+  setText("successTitle",  CONTENT.form.successTitle);
+  setText("successText",   CONTENT.form.successText);
+
+  showPage("service");
+}
+
+function buildFormTitle(title, italic) {
+  if (!title) return "";
+  if (!italic || !title.includes(italic)) return title;
+  return title.replace(italic, `<em>${italic}</em>`);
+}
+
+function renderVideo(svc, key) {
+  const container = document.getElementById("spVideoContainer");
+  if (!container) return;
+  const url = svc.videoUrl || "";
+
+  if (!url) {
+    container.innerHTML = `
+      <div class="video-placeholder">
+        <div class="video-placeholder-art">${videoArt(key)}</div>
+        <button class="video-play-btn" aria-label="Play video" onclick="this.closest('.video-placeholder').innerHTML='<div style=\\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg3);flex-direction:column;gap:12px;\\'><svg width=\\'48\\' height=\\'48\\' viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'var(--gold)\\' stroke-width=\\'1\\'><rect x=\\'2\\' y=\\'2\\' width=\\'20\\' height=\\'20\\' rx=\\'2\\'/></svg><p style=\\'font-size:12px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;\\'>Video coming soon</p></div>'">
+          <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </button>
+        <div class="video-label">${svc.videoLabel || ""}</div>
+      </div>`;
+    return;
+  }
+
+  const yt = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
+  const vm = url.match(/vimeo\.com\/(\d+)/);
+
+  if (yt) {
+    container.innerHTML = `<iframe class="video-frame" src="https://www.youtube.com/embed/${yt[1]}?rel=0" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture" title="${svc.videoLabel || ''}"></iframe>`;
+  } else if (vm) {
+    container.innerHTML = `<iframe class="video-frame" src="https://player.vimeo.com/video/${vm[1]}" allowfullscreen title="${svc.videoLabel || ''}"></iframe>`;
+  } else {
+    container.innerHTML = `<video class="video-frame" controls preload="metadata"><source src="${url}"><p style="color:var(--muted);padding:24px;">Your browser does not support video playback.</p></video>`;
+  }
+}
+
+function videoArt(key) {
+  const arts = {
+    mortgage:   `<svg width="100%" height="100%" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="960" height="540" fill="#1a1508"/><polygon points="480,30 940,510 20,510" fill="none" stroke="#c8a96e" stroke-width="1" stroke-opacity="0.3"/><line x1="480" y1="30" x2="480" y2="540" stroke="#c8a96e" stroke-width="0.8" stroke-opacity="0.35"/></svg>`,
+    income:     `<svg width="100%" height="100%" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="960" height="540" fill="#0d0f14"/><polyline points="40,440 200,310 360,370 520,190 680,260 840,130 920,160" fill="none" stroke="#c8a96e" stroke-width="2" stroke-opacity="0.4"/><circle cx="520" cy="190" r="5" fill="#c8a96e" fill-opacity="0.8"/></svg>`,
+    business:   `<svg width="100%" height="100%" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="960" height="540" fill="#0f0d0d"/><rect x="100" y="80" width="200" height="200" fill="none" stroke="#c8a96e" stroke-width="0.6" stroke-opacity="0.25" transform="rotate(12 200 180)"/><rect x="380" y="160" width="260" height="260" fill="none" stroke="#c8a96e" stroke-width="0.9" stroke-opacity="0.3" transform="rotate(-7 510 290)"/></svg>`,
+    family:     `<svg width="100%" height="100%" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="960" height="540" fill="#0c0e10"/><circle cx="480" cy="270" r="200" fill="none" stroke="#c8a96e" stroke-width="0.7" stroke-opacity="0.22"/><circle cx="480" cy="270" r="140" fill="none" stroke="#c8a96e" stroke-width="0.9" stroke-opacity="0.3"/><circle cx="480" cy="270" r="5" fill="#c8a96e" fill-opacity="0.6"/></svg>`,
+    retirement: `<svg width="100%" height="100%" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="960" height="540" fill="#100c14"/><rect x="80" y="390" width="80" height="130" fill="#c8a96e" fill-opacity="0.08"/><rect x="200" y="330" width="80" height="190" fill="#c8a96e" fill-opacity="0.12"/><rect x="320" y="260" width="80" height="260" fill="#c8a96e" fill-opacity="0.17"/><rect x="440" y="190" width="80" height="330" fill="#c8a96e" fill-opacity="0.22"/><rect x="560" y="130" width="80" height="390" fill="#c8a96e" fill-opacity="0.27"/><polyline points="120,390 240,330 360,260 480,190 600,130" fill="none" stroke="#c8a96e" stroke-width="2.5" stroke-opacity="0.55"/></svg>`,
+    final:      `<svg width="100%" height="100%" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="960" height="540" fill="#0d0d0d"/><path d="M 0 270 Q 240 70 480 270 Q 720 470 960 270" fill="none" stroke="#c8a96e" stroke-width="2" stroke-opacity="0.35"/><circle cx="480" cy="270" r="5" fill="#c8a96e" fill-opacity="0.7"/></svg>`,
+  };
+  return arts[key] || arts.mortgage;
+}
+
+// ── Form submit ────────────────────────────────────────────
+window.submitContactForm = async function() {
+  const form = document.getElementById("contactForm");
+  clearAllErrors(form);
+
+  const data = {
+    firstName: document.getElementById("fieldFirst")?.value.trim()   || "",
+    lastName:  document.getElementById("fieldLast")?.value.trim()    || "",
+    email:     document.getElementById("fieldEmail")?.value.trim()   || "",
+    phone:     document.getElementById("fieldPhone")?.value.trim()   || "",
+    age:       document.getElementById("fieldAge")?.value.trim()     || "",
+    service:   document.getElementById("fieldService")?.value        || "",
+    message:   document.getElementById("fieldMessage")?.value.trim() || "",
+  };
+
+  const { valid, errors } = validateForm(data);
+  if (!valid) {
+    const fieldMap = {
+      firstName: "fieldFirst",
+      lastName:  "fieldLast",
+      email:     "fieldEmail",
+      service:   "fieldService",
+    };
+    Object.entries(errors).forEach(([field, msg]) => {
+      const el = document.getElementById(fieldMap[field]);
+      if (el) showFieldError(el, msg);
+    });
+    return;
+  }
+
+  const btn = document.getElementById("formSubmitBtn");
+  btn.disabled = true;
+  btn.textContent = "Submitting...";
+
+  try {
+    await handleFormSubmit(data);
+    document.getElementById("formContent").style.display = "none";
+    document.getElementById("formSuccess").classList.add("show");
+    window.scrollTo({ top: document.getElementById("formSuccess").getBoundingClientRect().top + window.scrollY - 150, behavior: "smooth" });
+  } catch(err) {
+    showGlobalToast(err.message || "Something went wrong. Please try again.", "error");
+    btn.disabled    = false;
+    btn.textContent = CONTENT?.form?.submitText || "Request My Free Quote";
+  }
+};
+
+// ── Scroll helpers ─────────────────────────────────────────
+window.scrollToSection = function(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
+// ── Nav scroll effect ──────────────────────────────────────
+function initNavScroll() {
+  const nav = document.getElementById("mainNav");
+  window.addEventListener("scroll", () => {
+    nav.classList.toggle("scrolled", window.scrollY > 60);
+  }, { passive: true });
+}
+
+// ── Mobile nav ─────────────────────────────────────────────
+window.openDrawer  = () => document.getElementById("navDrawer").classList.add("open");
+window.closeDrawer = () => document.getElementById("navDrawer").classList.remove("open");
+
+// ── Custom cursor ──────────────────────────────────────────
+function initCursor() {
+  const cursor = document.getElementById("cursor");
+  const ring   = document.getElementById("cursorRing");
+  if (!cursor || !ring || window.matchMedia("(hover:none)").matches) return;
+  let rx=0,ry=0,cx=0,cy=0;
+  document.addEventListener("mousemove", e => {
+    cx = e.clientX; cy = e.clientY;
+    cursor.style.left = cx + "px";
+    cursor.style.top  = cy + "px";
+  });
+  (function loop() {
+    rx += (cx - rx) * 0.12;
+    ry += (cy - ry) * 0.12;
+    ring.style.left = rx + "px";
+    ring.style.top  = ry + "px";
+    requestAnimationFrame(loop);
+  })();
+  document.addEventListener("mouseover", e => {
+    const hoverable = e.target.closest("button,a,[role='button'],.service-card");
+    cursor.style.width  = hoverable ? "12px" : "8px";
+    cursor.style.height = hoverable ? "12px" : "8px";
+    ring.style.width    = hoverable ? "52px"  : "36px";
+    ring.style.height   = hoverable ? "52px"  : "36px";
+  });
+}
+
+// ── Scroll animations ──────────────────────────────────────
+function initScrollAnimations() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
+  }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
+  document.querySelectorAll(".fade-up").forEach(el => {
+    el.classList.remove("visible");
+    obs.observe(el);
+  });
+}
+
+function initCardReveal() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add("visible"), 80 * i);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll(".service-card").forEach(c => obs.observe(c));
+}
+
+// ── Toast ──────────────────────────────────────────────────
+function showGlobalToast(msg, type = "success") {
+  const t = document.getElementById("toast");
+  if (!t) return;
+  t.textContent = msg;
+  t.className = `toast ${type} show`;
+  setTimeout(() => t.classList.remove("show"), 4000);
+}
+</script>
+</body>
+</html>
