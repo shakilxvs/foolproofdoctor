@@ -370,7 +370,7 @@ nav.scrolled {
 .card-visual {
   width: 100%; position: relative; overflow: hidden; background: var(--bg3);
 }
-.card-visual svg { position: absolute; inset: 0; }
+.card-pattern svg { position: absolute; inset: 0; }
 .card-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(10,10,11,0.9) 0%, transparent 60%);
@@ -386,7 +386,7 @@ nav.scrolled {
   transition: background var(--transition), border-color var(--transition);
 }
 .service-card:hover .card-icon-wrap { background: var(--gold); border-color: var(--gold); }
-.card-icon-wrap svg { width: 17px; height: 17px; stroke: var(--gold); transition: stroke var(--transition); }
+.card-icon-wrap svg { width: 17px; height: 17px; stroke: var(--gold); transition: stroke var(--transition); position: static; }
 .service-card:hover .card-icon-wrap svg { stroke: var(--bg); }
 
 .card-body { padding: 22px 22px 26px; }
@@ -731,4 +731,3 @@ footer {
   transition: stroke var(--transition);
 }
 .footer-social-link:hover svg { stroke: var(--gold); }
-
