@@ -1,94 +1,103 @@
 // ============================================================
 // forms.js — FoolProofDoctor
-// Handles Formspree submission + EmailJS confirmation email
-// + Firestore submission save
+// Formspree + EmailJS + Firestore
 // ============================================================
 
 import { saveSubmission } from "./firebase-config.js";
 
-// ── Config ────────────────────────────────────────────────
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xgobzwrk";
 
-const EMAILJS_CONFIG = {
+const EMAILJS = {
   serviceId:  "foolproofdoctor",
   templateId: "foolproofdoctor",
   publicKey:  "whLrQpTfWR4fzykmJ",
 };
 
-// ── EmailJS ready check ───────────────────────────────────
-// EmailJS is initialised in index.html directly before this module runs.
-// We just check window.emailjs is available when sending.
-const emailjsReady = () => !!(window.emailjs);
-
 // ── Main Submit Handler ───────────────────────────────────
-/**
- * Called when a service page form is submitted.
- * 1. Validates fields
- * 2. Sends to Formspree (notifies admin via email)
- * 3. Sends confirmation email to client via EmailJS
- * 4. Saves to Firestore submissions collection
- * Returns { success: true } or throws.
- */
 export async function handleFormSubmit(formData) {
   const { firstName, lastName, email, phone, age, service, message } = formData;
 
-  // ── 1. Formspree ────────────────────────────────────────
-  const formspreePayload = {
-    firstName, lastName, email, phone, age,
-    service, message,
-    _subject: `New enquiry — ${service} — ${firstName} ${lastName}`,
-    _replyto: email,
-  };
-
-  const formspreeRes = await fetch(FORMSPREE_ENDPOINT, {
+  // ── 1. Formspree → admin notification email ───────────
+  const fRes = await fetch(FORMSPREE_ENDPOINT, {
     method:  "POST",
     headers: { "Content-Type": "application/json", "Accept": "application/json" },
-    body:    JSON.stringify(formspreePayload),
+    body: JSON.stringify({
+      firstName, lastName, email, phone, age, service, message,
+      _subject: `New enquiry — ${service} — ${firstName} ${lastName}`,
+      _replyto: email,
+    }),
   });
 
-  if (!formspreeRes.ok) {
-    const err = await formspreeRes.json().catch(() => ({}));
+  if (!fRes.ok) {
+    const err = await fRes.json().catch(() => ({}));
     throw new Error(err?.error || "Submission failed. Please try again.");
   }
 
-  // ── 2. EmailJS — confirmation to client ────────────────
-  if (emailjsReady() && window.emailjs) {
-    try {
-      await window.emailjs.send(
-        EMAILJS_CONFIG.serviceId,
-        EMAILJS_CONFIG.templateId,
-        {
-          to_name:      `${firstName} ${lastName}`,
-          to_email:     email,
-          service_name: service,
-          first_name:   firstName,
-          reply_to:     "support@foolproofdoctor.com",
-        }
-      );
-    } catch (e) {
-      // Non-fatal — submission was already sent to Formspree
-      console.warn("EmailJS confirmation failed:", e);
-    }
-  }
+  // ── 2. EmailJS → confirmation email to client ─────────
+  // IMPORTANT: In your EmailJS template dashboard you MUST set:
+  //   "To Email" field  →  {{to_email}}
+  //   "To Name" field   →  {{to_name}}
+  // Without this the email only goes to your own address.
+  await sendConfirmationEmail({ firstName, lastName, email, service });
 
-  // ── 3. Firestore ────────────────────────────────────────
-  let firestoreId = null;
+  // ── 3. Firestore → save submission record ────────────
   try {
-    firestoreId = await saveSubmission({
-      firstName, lastName, email, phone,
-      age: age || "",
+    await saveSubmission({
+      firstName, lastName, email,
+      phone:   phone   || "",
+      age:     age     || "",
       service,
       message: message || "",
       source:  "website_form",
     });
   } catch (e) {
-    console.warn("Firestore save failed:", e);
+    // Non-fatal — form already submitted to Formspree
+    console.warn("[FPD] Firestore save failed:", e.message);
   }
 
-  return { success: true, firestoreId };
+  return { success: true };
 }
 
-// ── Form Validation ───────────────────────────────────────
+// ── EmailJS send with full error visibility ───────────────
+async function sendConfirmationEmail({ firstName, lastName, email, service }) {
+  // Check EmailJS is loaded
+  if (!window.emailjs) {
+    console.error("[FPD] EmailJS not loaded — CDN script may have failed.");
+    return;
+  }
+
+  // Ensure EmailJS is initialised (safe to call multiple times)
+  try {
+    window.emailjs.init({ publicKey: EMAILJS.publicKey });
+  } catch(e) {
+    // Already initialised — fine to ignore
+  }
+
+  try {
+    const result = await window.emailjs.send(
+      EMAILJS.serviceId,
+      EMAILJS.templateId,
+      {
+        to_name:      `${firstName} ${lastName}`,
+        to_email:     email,           // ← EmailJS template "To Email" must be {{to_email}}
+        first_name:   firstName,
+        service_name: service,
+        reply_to:     "support@foolproofdoctor.com",
+      }
+    );
+    console.log("[FPD] EmailJS confirmation sent:", result.status, result.text);
+  } catch (e) {
+    // Log full error so it's visible in browser console for debugging
+    console.error("[FPD] EmailJS send failed:", {
+      status:  e.status,
+      text:    e.text,
+      message: e.message || e,
+    });
+    // Non-fatal — form was already submitted successfully
+  }
+}
+
+// ── Validation ────────────────────────────────────────────
 export function validateForm(formData) {
   const errors = {};
   if (!formData.firstName?.trim()) errors.firstName = "First name is required.";
@@ -97,29 +106,28 @@ export function validateForm(formData) {
   if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
     errors.email = "Please enter a valid email address.";
   }
-  if (!formData.service?.trim())   errors.service   = "Please select a service.";
+  if (!formData.service?.trim()) errors.service = "Please select a service.";
   return { valid: Object.keys(errors).length === 0, errors };
 }
 
-// ── Show field error ──────────────────────────────────────
+// ── Field error helpers ───────────────────────────────────
 export function showFieldError(fieldEl, message) {
   clearFieldError(fieldEl);
   fieldEl.style.borderColor = "#c86e6e";
-  const err = document.createElement("span");
-  err.className    = "field-error";
-  err.style.cssText = "display:block;font-size:11px;color:#c86e6e;margin-top:5px;letter-spacing:0.05em;";
-  err.textContent  = message;
-  fieldEl.parentNode.appendChild(err);
+  const span = document.createElement("span");
+  span.className = "field-error";
+  span.style.cssText = "display:block;font-size:11px;color:#c86e6e;margin-top:5px;letter-spacing:0.05em;";
+  span.textContent = message;
+  fieldEl.parentNode.appendChild(span);
 }
 
 export function clearFieldError(fieldEl) {
   fieldEl.style.borderColor = "";
-  const existing = fieldEl.parentNode.querySelector(".field-error");
-  if (existing) existing.remove();
+  fieldEl.parentNode.querySelector(".field-error")?.remove();
 }
 
 export function clearAllErrors(formEl) {
   formEl.querySelectorAll(".field-error").forEach(e => e.remove());
-  formEl.querySelectorAll(".form-input, .form-select, .form-textarea")
+  formEl.querySelectorAll(".form-input,.form-select,.form-textarea")
         .forEach(el => el.style.borderColor = "");
 }
