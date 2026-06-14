@@ -48,11 +48,7 @@ input,select,textarea{font-family:var(--sans)}
 .l-btn{width:100%;background:var(--gold);border:none;color:var(--bg);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:15px;cursor:pointer;transition:background .25s;margin-top:4px}
 .l-btn:hover{background:var(--gold2)}
 .l-btn:disabled{opacity:.6;cursor:not-allowed}
-.l-google{width:100%;background:transparent;border:1px solid var(--border);color:var(--white);font-size:12px;font-weight:400;padding:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:0;transition:border-color .25s,background .25s}
-.l-google:hover{border-color:var(--gold);background:var(--golddim)}
-.l-google svg{width:18px;height:18px;flex-shrink:0}
-.l-divider{display:flex;align-items:center;gap:12px;margin:20px 0;color:var(--muted2);font-size:11px}
-.l-divider::before,.l-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+
 .l-secure{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:22px;font-size:11px;color:var(--muted2)}
 .l-secure svg{width:12px;height:12px;stroke:var(--muted2)}
 
@@ -268,19 +264,8 @@ tbody tr:hover{background:rgba(255,255,255,.02)}
   <div class="l-card">
     <div class="l-logo">FoolProof<span>Doctor</span></div>
     <div class="l-sub">Admin Panel</div>
-    <div id="domainWarn" style="display:none;background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.4);color:#c8a96e;font-size:12px;padding:12px 14px;margin-bottom:16px;line-height:1.6;text-align:left;">
-      <strong>Setup required:</strong> Add <strong id="domainName"></strong> to Firebase Console &rarr; Authentication &rarr; Settings &rarr; Authorized Domains, then refresh this page.
-    </div>
     <div class="l-err" id="lErr"></div>
-
-    <button class="l-google" id="btnGoogle" onclick="doGoogle()">
-      <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-      Continue with Google
-    </button>
-
-    <div class="l-divider">or sign in with email</div>
-
-    <label class="l-label" for="lEmail">Email</label>
+<label class="l-label" for="lEmail">Email</label>
     <input class="l-input" id="lEmail" type="email" placeholder="admin@foolproofdoctor.com" autocomplete="email" onkeydown="if(event.key==='Enter')doEmail()">
 
     <label class="l-label" for="lPass">Password</label>
@@ -412,18 +397,6 @@ firebase.initializeApp(fbConfig);
 var auth = firebase.auth();
 var db   = firebase.firestore();
 
-// Domain warning — show if this hostname is likely not yet in Firebase Authorized Domains
-(function() {
-  var h = location.hostname;
-  var ok = h === 'localhost' || h === '127.0.0.1' || h.endsWith('.firebaseapp.com') || h.endsWith('.web.app');
-  if (!ok) {
-    var w = document.getElementById('domainWarn');
-    var d = document.getElementById('domainName');
-    if (w) w.style.display = 'block';
-    if (d) d.textContent = h;
-  }
-})();
-
 // ════════════════════════════════════════════════
 // CONSTANTS
 // ════════════════════════════════════════════════
@@ -510,19 +483,6 @@ function doEmail() {
     .finally(function() { btn.disabled = false; btn.textContent = "Sign In"; });
 }
 
-function doGoogle() {
-  clearErr();
-  var btn = document.getElementById("btnGoogle");
-  btn.disabled = true;
-  var p = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithPopup(p)
-    .catch(function(e) { if (e.code !== "auth/popup-closed-by-user") showErr(errMsg(e.code)); })
-    .finally(function() { btn.disabled = false; });
-}
-
-// ════════════════════════════════════════════════
-// FIRESTORE CONTENT
-// ════════════════════════════════════════════════
 function loadContent() {
   db.collection("settings").doc("siteContent").get()
     .then(function(d) { if (d.exists) content = d.data(); })
