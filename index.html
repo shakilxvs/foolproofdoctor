@@ -62,9 +62,9 @@
   <ul class="drawer-links" id="drawerLinks">
     <li><a onclick="closeDrawer(); scrollToSection('services')">Services</a></li>
     <li><a onclick="closeDrawer(); scrollToSection('about')">About</a></li>
-    <li><a onclick="closeDrawer(); scrollToSection('contact')">Contact</a></li>
+    <li><a onclick="closeDrawer(); navigateTo('contact')">Contact</a></li>
   </ul>
-  <button class="drawer-cta" id="drawerCta" onclick="closeDrawer(); scrollToSection('contact')">Get Protected</button>
+  <button class="drawer-cta" id="drawerCta" onclick="closeDrawer(); navigateTo('contact')">Get Protected</button>
 </div>
 
 <!-- Navigation -->
@@ -75,9 +75,9 @@
   <ul class="nav-links" id="navLinks">
     <li><a onclick="navigateTo('home'); setTimeout(()=>scrollToSection('services'),80)">Services</a></li>
     <li><a onclick="navigateTo('home'); setTimeout(()=>scrollToSection('about'),80)">About</a></li>
-    <li><a onclick="navigateTo('home'); setTimeout(()=>scrollToSection('contact'),80)">Contact</a></li>
+    <li><a onclick="navigateTo('contact')">Contact</a></li>
   </ul>
-  <button class="nav-cta" id="navCta" onclick="navigateTo('home'); setTimeout(()=>scrollToSection('contact'),80)">Get Protected</button>
+  <button class="nav-cta" id="navCta" onclick="navigateTo('contact')">Get Protected</button>
   <button class="hamburger" onclick="openDrawer()" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
@@ -344,6 +344,128 @@
 
 </div><!-- /page-service -->
 
+
+<!-- ════════════════════ CONTACT PAGE ════════════════════ -->
+<div class="page" id="page-contact">
+
+  <section class="service-page-hero" style="min-height:38vh;background:linear-gradient(135deg,#0a0a0b,#0e0c08);">
+    <div class="sp-bg"></div>
+    <div class="sp-pattern">
+      <svg width="100%" height="100%" viewBox="0 0 1400 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="200" x2="1400" y2="200" stroke="#c8a96e" stroke-width="0.4" stroke-opacity="0.15"/>
+        <path d="M 0 200 Q 350 80 700 200 Q 1050 320 1400 200" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-opacity="0.3"/>
+        <circle cx="700" cy="200" r="5" fill="#c8a96e" fill-opacity="0.6"/>
+        <circle cx="0"    cy="200" r="3" fill="#c8a96e" fill-opacity="0.3"/>
+        <circle cx="1400" cy="200" r="3" fill="#c8a96e" fill-opacity="0.3"/>
+      </svg>
+    </div>
+    <div class="sp-content">
+      <button class="sp-back" onclick="navigateTo('home')" aria-label="Back to home">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to Home
+      </button>
+      <div class="sp-eyebrow" id="contactPageEyebrow">Get In Touch</div>
+      <h1 class="sp-title" id="contactPageTitle">Let's talk about<br><em>your future</em></h1>
+    </div>
+  </section>
+
+  <!-- Contact Body -->
+  <section class="contact-page-body">
+
+    <!-- Left: Info -->
+    <div class="contact-info-col fade-up">
+      <div class="contact-support-title" id="contactSupportTitle">We're here to help</div>
+      <p class="contact-support-text" id="contactSupportText">Our licensed financial professionals are available Monday to Friday, 9am to 6pm. We typically respond within 24 hours.</p>
+
+      <div class="contact-details" id="contactDetailsBlock"></div>
+      <div class="contact-social-wrap" id="contactSocialBlock"></div>
+    </div>
+
+    <!-- Right: Form -->
+    <div class="contact-form-wrap fade-up">
+      <div class="form-card">
+        <div id="contactPageFormContent">
+          <div class="form-card-title">Send us a message</div>
+          <div class="form-card-sub">Fill in the form and we'll be in touch shortly.</div>
+          <form id="contactPageForm" novalidate onsubmit="return false;">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="cpFirst">First Name</label>
+                <input class="form-input" id="cpFirst" type="text" placeholder="John" autocomplete="given-name">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cpLast">Last Name</label>
+                <input class="form-input" id="cpLast" type="text" placeholder="Smith" autocomplete="family-name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cpEmail">Email Address</label>
+              <input class="form-input" id="cpEmail" type="email" placeholder="john@example.com" autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cpPhone">Phone Number</label>
+              <input class="form-input" id="cpPhone" type="tel" placeholder="+1 (555) 000-0000" autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cpService">How can we help?</label>
+              <div class="form-select-wrap">
+                <select class="form-select" id="cpService">
+                  <option value="General Inquiry">General Inquiry</option>
+                  <option value="Mortgage Protection">Mortgage Protection</option>
+                  <option value="Income Protection">Income Protection</option>
+                  <option value="Business Protection">Business Protection</option>
+                  <option value="Family Protection">Family Protection</option>
+                  <option value="Retirement Planning">Retirement Planning</option>
+                  <option value="Final Expense">Final Expense</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cpMessage">Message</label>
+              <textarea class="form-textarea" id="cpMessage" placeholder="Tell us how we can help you..." style="min-height:110px;"></textarea>
+            </div>
+            <button class="form-submit" id="cpSubmitBtn" type="button" onclick="submitContactPageForm()">
+              Send Message
+            </button>
+          </form>
+        </div>
+        <div class="form-success" id="contactPageSuccess">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="success-title">Message received.</div>
+          <p class="success-text">Thank you for reaching out. A specialist will be in touch within 24 hours.</p>
+          <button class="btn-primary" style="margin-top:24px;" onclick="navigateTo('home')">Back to Home</button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+  <footer>
+    <div class="footer-left">
+      <div class="footer-brand">FoolProof<span class="accent">Doctor</span></div>
+      <div class="footer-tagline" id="cpFooterTagline">Become Financially Foolproof</div>
+      <div class="footer-contact" id="cpFooterContact"></div>
+      <div class="footer-social"  id="cpFooterSocial"></div>
+    </div>
+    <ul class="footer-links">
+      <li><a onclick="navigateTo('mortgage-protection')">Mortgage Protection</a></li>
+      <li><a onclick="navigateTo('income-protection')">Income Protection</a></li>
+      <li><a onclick="navigateTo('business-protection')">Business Protection</a></li>
+      <li><a onclick="navigateTo('family-protection')">Family Protection</a></li>
+      <li><a onclick="navigateTo('retirement-planning')">Retirement Planning</a></li>
+      <li><a onclick="navigateTo('final-expense')">Final Expense</a></li>
+    </ul>
+  </footer>
+  <div class="footer-bottom">
+    <span id="cpFooterCopy">FoolProofDoctor Financial Protection</span>
+    <span>&copy; <span class="footerYearSp"></span> All rights reserved.</span>
+  </div>
+
+</div><!-- /page-contact -->
+
 <!-- Toast -->
 <div class="toast" id="toast" role="alert" aria-live="polite"></div>
 
@@ -367,17 +489,14 @@ function buildSlugMap() {
     const slug = CONTENT?.services?.[k]?.slug || k;
     SLUG_TO_KEY[slug] = k;
   });
+  // Non-service routes
+  SLUG_TO_KEY["contact"] = "__contact__";
 }
 
 // ── Bootstrap ──────────────────────────────────────────────
 window.addEventListener("DOMContentLoaded", async () => {
   // EmailJS init — window.emailjs is available since the CDN
   // script is loaded synchronously in <head> before this module
-  if (window.emailjs) {
-    // EmailJS v4 init syntax
-    window.emailjs.init({ publicKey: "whLrQpTfWR4fzykmJ" });
-  }
-
   try {
     const remote = await loadSiteContent();
     CONTENT = remote ? deepMerge(DEFAULT_CONTENT, remote) : DEFAULT_CONTENT;
@@ -650,9 +769,11 @@ function handleRoute() {
   const path = window.location.pathname.replace(/^\//, "").replace(/\/$/, "");
   if (!path || path === "index.html") {
     showPage("home");
+  } else if (path === "contact") {
+    loadContactPage();
   } else {
     const key = SLUG_TO_KEY[path];
-    if (key) {
+    if (key && key !== "__contact__") {
       loadServicePage(key);
     } else {
       showPage("home");
@@ -665,8 +786,10 @@ window.navigateTo = function(slug) {
     history.pushState({}, "", "/");
     showPage("home");
     window.scrollTo({ top: 0, behavior: "smooth" });
+  } else if (slug === "contact") {
+    history.pushState({}, "", "/contact");
+    loadContactPage();
   } else {
-    // Find canonical slug from slug map
     const key = SLUG_TO_KEY[slug] || Object.keys(CONTENT.services).find(k => CONTENT.services[k].slug === slug) || slug;
     const canonicalSlug = CONTENT.services[key]?.slug || slug;
     history.pushState({}, "", "/" + canonicalSlug);
@@ -926,6 +1049,129 @@ function showGlobalToast(msg, type = "success") {
   t.className = `toast ${type} show`;
   setTimeout(() => t.classList.remove("show"), 4000);
 }
+
+
+// ── Load contact page ──────────────────────────────────────
+function loadContactPage() {
+  const C = CONTENT;
+  document.title = C.contact.metaTitle || "Contact Us | FoolProofDoctor";
+
+  // Hero
+  setText("contactSupportTitle", C.contact.supportTitle);
+  setText("contactSupportText",  C.contact.supportText);
+
+  // Detail items
+  buildContactDetails("contactDetailsBlock", C.contact);
+
+  // Social
+  buildFooterSocial("contactSocialBlock", C.footer.socialLinks);
+
+  // Footer
+  setText("cpFooterTagline", C.footer.tagline);
+  setText("cpFooterCopy",    C.footer.copyrightName);
+  buildFooterContact("cpFooterContact", C.contact);
+  buildFooterSocial("cpFooterSocial",   C.footer.socialLinks);
+
+  // Reset form
+  const fc = document.getElementById("contactPageFormContent");
+  const fs = document.getElementById("contactPageSuccess");
+  if (fc) fc.style.display = "block";
+  if (fs) fs.classList.remove("show");
+
+  showPage("contact");
+}
+
+// ── Build contact detail items (phone, email, address) ────
+function buildContactDetails(elId, contact) {
+  const el = document.getElementById(elId);
+  if (!el) return;
+  const icons = {
+    phone:   `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 012.1 5.18 2 2 0 014.1 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 17z"/></svg>`,
+    email:   `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
+    address: `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+    hours:   `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+  };
+  const items = [];
+  if (contact.phone) {
+    items.push(`<a href="tel:${contact.phone}" class="contact-detail-item">
+      <div class="contact-detail-icon">${icons.phone}</div>
+      <div class="contact-detail-info">
+        <span class="contact-detail-label">Phone</span>
+        ${contact.phone}
+      </div>
+    </a>`);
+  }
+  if (contact.email) {
+    items.push(`<a href="mailto:${contact.email}" class="contact-detail-item">
+      <div class="contact-detail-icon">${icons.email}</div>
+      <div class="contact-detail-info">
+        <span class="contact-detail-label">Email</span>
+        ${contact.email}
+      </div>
+    </a>`);
+  }
+  if (contact.supportHours) {
+    items.push(`<div class="contact-detail-item">
+      <div class="contact-detail-icon">${icons.hours}</div>
+      <div class="contact-detail-info">
+        <span class="contact-detail-label">Hours</span>
+        ${contact.supportHours}
+      </div>
+    </div>`);
+  }
+  if (contact.address) {
+    items.push(`<div class="contact-detail-item">
+      <div class="contact-detail-icon">${icons.address}</div>
+      <div class="contact-detail-info">
+        <span class="contact-detail-label">Address</span>
+        ${contact.address}
+      </div>
+    </div>`);
+  }
+  el.innerHTML = items.join("");
+}
+
+// ── Contact page form submit ──────────────────────────────
+window.submitContactPageForm = async function() {
+  const form = document.getElementById("contactPageForm");
+  clearAllErrors(form);
+
+  const data = {
+    firstName: document.getElementById("cpFirst")?.value.trim()   || "",
+    lastName:  document.getElementById("cpLast")?.value.trim()    || "",
+    email:     document.getElementById("cpEmail")?.value.trim()   || "",
+    phone:     document.getElementById("cpPhone")?.value.trim()   || "",
+    age:       "",
+    service:   document.getElementById("cpService")?.value        || "General Inquiry",
+    message:   document.getElementById("cpMessage")?.value.trim() || "",
+  };
+
+  const { valid, errors } = validateForm(data);
+  if (!valid) {
+    const fieldMap = { firstName:"cpFirst", lastName:"cpLast", email:"cpEmail", service:"cpService" };
+    Object.entries(errors).forEach(([f, msg]) => {
+      const el = document.getElementById(fieldMap[f]);
+      if (el) showFieldError(el, msg);
+    });
+    return;
+  }
+
+  const btn = document.getElementById("cpSubmitBtn");
+  btn.disabled = true;
+  btn.textContent = "Sending...";
+
+  try {
+    await handleFormSubmit(data);
+    document.getElementById("contactPageFormContent").style.display = "none";
+    document.getElementById("contactPageSuccess").classList.add("show");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } catch(err) {
+    showGlobalToast(err.message || "Something went wrong. Please try again.", "error");
+    btn.disabled    = false;
+    btn.textContent = "Send Message";
+  }
+};
+
 </script>
 </body>
 </html>
