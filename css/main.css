@@ -802,3 +802,93 @@ footer {
   .hero { grid-template-columns: 1fr; }
   .hero-image-wrap { height: 300px; }
 }
+
+/* ══════════════════════════════════════════════════════════
+   CONTACT PAGE — /contact
+   ══════════════════════════════════════════════════════════ */
+
+.cp-body {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 64px;
+  padding: 64px 48px 100px;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* ── Info column ───────────────────────────────────────── */
+.cp-info { position: sticky; top: 92px; }
+
+.cp-info-title {
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.6vw, 36px);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.cp-info-text {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 36px;
+}
+.cp-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.contact-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  transition: color var(--transition);
+}
+.contact-detail-item:hover { color: var(--white); }
+.contact-detail-icon {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  background: var(--gold-dim);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-detail-icon svg { width: 15px; height: 15px; stroke: var(--gold); }
+.contact-detail-label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.cp-social {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ── Form column ───────────────────────────────────────── */
+.cp-form-col .form-card { padding: 40px; }
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .cp-body {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 48px 24px 80px;
+  }
+  .cp-info { position: static; }
+}
+@media (max-width: 768px) {
+  .cp-body { padding: 40px 20px 64px; }
+  .cp-form-col .form-card { padding: 24px 16px; }
+}
