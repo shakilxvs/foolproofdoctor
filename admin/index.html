@@ -731,7 +731,11 @@ function heroHTML(h) {
     row(grp("Title Line 1",inp("c-h-t1",h.titleLine1||"Become")),grp("Title Line 2 (italic gold)",inp("c-h-t2",h.titleLine2||"Financially"))) +
     grp("Title Line 3", inp("c-h-t3",h.titleLine3||"Foolproof")) +
     grp("Subtitle", ta("c-h-sub",h.subtitle||"")) +
-    row(grp("Primary Button",inp("c-h-cta1",h.ctaPrimary||"")),grp("Secondary Button",inp("c-h-cta2",h.ctaSecondary||""))));
+    row(grp("Primary Button",inp("c-h-cta1",h.ctaPrimary||"")),grp("Secondary Button",inp("c-h-cta2",h.ctaSecondary||""))) +
+    '<div style="height:1px;background:var(--border2);margin:12px 0 16px;"></div>' +
+    grp("Hero Image URL",inp("c-h-img",h.imageUrl||"","url","https://your-image-url.com/photo.jpg")) +
+    '<div style="font-size:11px;color:var(--muted2);margin-top:-8px;">Paste any image URL (Shopify, Cloudinary, Google Drive, etc). Leave blank to show placeholder.</div>');
+
 }
 function aboutHTML(ab, stats) {
   return card("About Section",
@@ -795,7 +799,7 @@ function seoHTML(se) {
 function saveCont() {
   var stats = [0,1,2,3].map(function(i){ return {num:gv("c-s"+i+"n"),label:gv("c-s"+i+"l")}; });
   var data = {
-    hero:{eyebrow:gv("c-h-ey"),titleLine1:gv("c-h-t1"),titleLine2:gv("c-h-t2"),titleLine3:gv("c-h-t3"),titleItalicLine:2,subtitle:gv("c-h-sub"),ctaPrimary:gv("c-h-cta1"),ctaSecondary:gv("c-h-cta2")},
+    hero:{eyebrow:gv("c-h-ey"),titleLine1:gv("c-h-t1"),titleLine2:gv("c-h-t2"),titleLine3:gv("c-h-t3"),titleItalicLine:2,subtitle:gv("c-h-sub"),ctaPrimary:gv("c-h-cta1"),ctaSecondary:gv("c-h-cta2"),imageUrl:gv("c-h-img")},
     about:{label:gv("c-ab-lbl"),titleLine1:gv("c-ab-t1"),titleLine2:gv("c-ab-t2"),titleItalicLine:2,body1:gv("c-ab-b1"),body2:gv("c-ab-b2"),stats:stats},
     servicesSection:{label:gv("c-sv-lbl"),titleLine1:gv("c-sv-t1"),titleLine2:gv("c-sv-t2"),titleItalicLine:2,subtitle:gv("c-sv-sub")},
     testimonial:{quote:gv("c-te-q"),author:gv("c-te-a"),role:gv("c-te-r")},
