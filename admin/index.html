@@ -775,9 +775,14 @@ function footerHTML(fo, sl) {
 }
 function contactHTML(co) {
   return card("Contact Info",
-    grp("Phone Number", inp("c-co-ph",co.phone||"","tel","+1 (555) 000-0000")) +
-    grp("Support Email", inp("c-co-em",co.email||"","email","hello@foolproofdoctor.com")) +
-    grp("Address", ta("c-co-ad",co.address||"")));
+    '<div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border2);">Contact Page — Public Info</div>' +
+    grp("Section Title", inp("c-co-stitle", co.supportTitle||"", "text", "We're here to help")) +
+    grp("Support Text", ta("c-co-stxt", co.supportText||"", "Our team is available Monday to Friday...")) +
+    grp("Office Hours", inp("c-co-shrs", co.supportHours||"", "text", "Mon – Fri, 9am – 6pm")) +
+    '<div style="height:1px;background:var(--border2);margin:16px 0;"></div>' +
+    grp("Phone Number", inp("c-co-ph", co.phone||"", "tel", "+1 (555) 000-0000")) +
+    grp("Support Email", inp("c-co-em", co.email||"", "email", "hello@foolproofdoctor.com")) +
+    grp("Address", ta("c-co-ad", co.address||"")));
 }
 function seoHTML(se) {
   return card("SEO & Meta",
@@ -797,7 +802,7 @@ function saveCont() {
     cta:{titleLine1:gv("c-ct-t1"),titleLine2:gv("c-ct-t2"),titleLine3:gv("c-ct-t3"),titleItalicLine:2,subtitle:gv("c-ct-sub"),ctaPrimary:gv("c-ct-p"),ctaSecondary:gv("c-ct-s")},
     form:{title:gv("c-fm-t"),subtitle:gv("c-fm-s"),submitText:gv("c-fm-btn"),successTitle:gv("c-fm-st"),successText:gv("c-fm-sm")},
     footer:{tagline:gv("c-fo-tag"),copyrightName:gv("c-fo-copy"),socialLinks:{facebook:gv("c-sl-fb"),instagram:gv("c-sl-ig"),twitter:gv("c-sl-tw"),linkedin:gv("c-sl-li")}},
-    contact:{phone:gv("c-co-ph"),email:gv("c-co-em"),address:gv("c-co-ad")},
+    contact:{supportTitle:gv("c-co-stitle"),supportText:gv("c-co-stxt"),supportHours:gv("c-co-shrs"),phone:gv("c-co-ph"),email:gv("c-co-em"),address:gv("c-co-ad")},
     seo:{siteTitle:gv("c-se-t"),metaDescription:gv("c-se-d"),ogTitle:gv("c-se-ogt"),ogDescription:gv("c-se-ogd"),ogImageUrl:gv("c-se-ogi")},
     updatedAt:firebase.firestore.FieldValue.serverTimestamp()
   };
