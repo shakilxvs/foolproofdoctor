@@ -218,9 +218,14 @@ export const DEFAULT_CONTENT = {
 
   // ── Contact Info ──────────────────────────────────────────
   contact: {
-    phone:    "",
-    email:    "",
-    address:  "",
+    supportTitle: "We're here to help",
+    supportText:  "Our licensed financial professionals are available Monday to Friday, 9am to 6pm. We typically respond within 24 hours.",
+    supportHours: "Mon – Fri, 9am – 6pm",
+    phone:        "",
+    email:        "",
+    address:      "",
+    metaTitle:    "Contact Us | FoolProofDoctor",
+    metaDesc:     "Get in touch with FoolProofDoctor. Our licensed financial professionals are ready to help you become financially foolproof.",
   }
 };
 
