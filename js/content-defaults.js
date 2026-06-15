@@ -50,6 +50,7 @@ export const DEFAULT_CONTENT = {
     subtitle:        "Protecting what matters most — your home, your income, your family, and your future. Comprehensive financial protection tailored to your life.",
     ctaPrimary:      "Explore Protection Plans",
     ctaSecondary:    "Our Approach",
+    imageUrl:         "",  // URL of hero image — paste any image URL
   },
 
   // ── About Strip ───────────────────────────────────────────
